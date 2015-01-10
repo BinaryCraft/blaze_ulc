@@ -1,0 +1,19 @@
+{
+  "name": "Blaze",
+  "version": "1.0.0",
+  "description": "A website for youth on fire for Christ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marthinus-engelbrecht/blaze_ulc.git"
+  },
+  "author": "Marthinus Engelbrecht",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marthinus-engelbrecht/blaze_ulc/issues"
+  },
+  "homepage": "https://github.com/marthinus-engelbrecht/blaze_ulc"
+}

@@ -1,0 +1,6 @@
+client-side/www
+client-side/platforms
+client-side/plugins
+client-side/app/bower_components
+client-side/node_modules
+.idea
