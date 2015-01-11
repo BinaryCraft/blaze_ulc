@@ -24,11 +24,76 @@ module.exports = function (grunt) {
             }
         },
 
-        //Clean distribution and cordova www folders
-        clean: ["www", "dist"]
+        jshint: {
+            options: {
+                reporter: require('jshint-stylish')
+            },
+            all: [
+                'Gruntfile.js',
+                'app/**/*.js',
+                '!app/bower_components/**/*.js'
+            ]
+        },
+
+        clean: ['.tmp', 'www'],
+
+        concat: {
+            options: {
+                separator: ';'
+            },
+            distri: {
+                src: ['app/bower_components/angular/angular.js', 'app/main.js'],
+                dest: '.tmp/blaze.concat.js'
+            }
+        },
+
+        uglify: {
+            distri: {
+                files: {
+                    '.tmp/blaze.min.js': ['.tmp/blaze.annotated.js']
+                }
+            }
+        },
+
+        usemin: {
+            html: '.tmp/index.html'
+        },
+
+        ngAnnotate: {
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '.tmp/',
+                        src: '*.js',
+                        ext: '.annotated.js',
+                        dest: '.tmp/'
+                    }
+                ]
+            }
+        },
+
+        copy: {
+            htmlToTmp: {
+                expand: true,
+                cwd: 'app/',
+                src: ['index.html'],
+                dest: '.tmp'
+            },
+            srcToWww: {
+                expand: true,
+                cwd: '.tmp/',
+                src: ['blaze.min.js', 'index.html'],
+                dest: 'www'
+            }
+        }
     });
 
     grunt.registerTask('serve', function () {
         grunt.task.run(['connect', 'watch']);
     });
-}
+
+    grunt.registerTask('build', function () {
+        grunt.task.run(['clean', 'jshint', 'concat', 'ngAnnotate', 'uglify', 'copy:htmlToTmp', 'usemin', 'copy:srcToWww']);
+    });
+};
