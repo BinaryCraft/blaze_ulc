@@ -1,3 +1,5 @@
-/**
- * Created by marthinus on 2015/01/10.
- */
+(function(app){
+    app.controller('mainController', function($scope){
+        $scope.randomStuff = ['Apple', 'Car', 'Tooth brush', 'Juice', 'Tennis ball'];
+    });
+})(angular.module('blaze', []))

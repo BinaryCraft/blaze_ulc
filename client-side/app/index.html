@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <title>Blaze app</title>
 </head>
-<body>
+<body ng-app="blaze">
     This is the blaze app!!
+    </br>
+    </br>
+    <div ng-controller="mainController">With awesome things in the main controller:
+        <ul>
+            <li ng-repeat="stuff in randomStuff">{{stuff}}</li>
+        </ul>
+    </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+
+    <script src="main.js"></script>
 </body>
 </html>
