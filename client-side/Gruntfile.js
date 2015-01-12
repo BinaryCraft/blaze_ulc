@@ -86,14 +86,42 @@ module.exports = function (grunt) {
                 src: ['blaze.min.js', 'index.html'],
                 dest: 'www'
             }
+        },
+
+        wiredep: {
+            options: {
+                cwd: 'app',
+                directory: 'app/bower_components/'
+            },
+            app: {
+                src: ['app/index.html']
+            },
+            test: {
+                src: ['test/config/karma.conf.js'],
+                ignorePath: /..\//,
+                exclude: ['/foundation', '/angular-scenario'],
+                devDependencies: true,
+                //TODO: Remove this when grunt-wiredep 1.8.2 out. See: https://github.com/taptapship/wiredep/commit/6ab3ad314898aa70155185546ec160492eeebebf
+                fileTypes: {
+                    js: {
+                        block: /(([\s\t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
+                        detect: {
+                            js: /'(.*\.js)'/gi
+                        },
+                        replace: {
+                            js: '\'{{filePath}}\','
+                        }
+                    }
+                }
+            }
         }
     });
 
     grunt.registerTask('serve', function () {
-        grunt.task.run(['connect', 'watch']);
+        grunt.task.run(['wiredep:app','connect', 'watch']);
     });
 
     grunt.registerTask('build', function () {
-        grunt.task.run(['clean', 'jshint', 'concat', 'ngAnnotate', 'uglify', 'copy:htmlToTmp', 'usemin', 'copy:srcToWww']);
+        grunt.task.run(['clean', 'wiredep:app', 'jshint', 'concat', 'ngAnnotate', 'uglify', 'copy:htmlToTmp', 'usemin', 'copy:srcToWww']);
     });
 };
