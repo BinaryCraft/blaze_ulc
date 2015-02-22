@@ -1,4 +1,4 @@
-var cordova = require('cordova');
+var _ = require('lodash');
 
 module.exports = function (grunt) {
 
@@ -11,6 +11,16 @@ module.exports = function (grunt) {
                     port: 9000,
                     hostname: 'localhost',
                     base: 'app'
+                }
+            },
+            serve_images: {
+                options: {
+                    port: 9001,
+                    hostname: 'localhost',
+                    base: 'images',
+                    middleware: function(connect, options){
+                        return [connect.static(options.base[0])];
+                    }
                 }
             }
         },
@@ -37,12 +47,23 @@ module.exports = function (grunt) {
 
         clean: ['.tmp', 'www'],
 
+        bower_concat: {
+            all: {
+                exclude: ['angular-mocks'],
+                dest: '.tmp/_bower.min.js',
+                callback: function(mainFiles, component) {
+                    return _.map(mainFiles, function(filepath) {
+                        // Use minified files if available
+                        var min = filepath.replace(/\.js$/, '.min.js');
+                        return grunt.file.exists(min) ? min : filepath;
+                    });
+                }
+            }
+        },
+
         concat: {
-            options: {
-                separator: ';'
-            },
             distri: {
-                src: ['app/bower_components/angular/angular.js', 'app/main.js'],
+                src: ['.tmp/_bower.min.js','app/**/*.js', '!app/bower_components/**/*.js'],
                 dest: '.tmp/blaze.concat.js'
             }
         },
@@ -74,16 +95,35 @@ module.exports = function (grunt) {
         },
 
         copy: {
+            //TODO: Only for now. Should be removed once we have the blaze Facebook details.
+            jsonToWww:{
+                expand: true,
+                cwd: 'app/',
+                src: ['**/*.json', '!**/bower_components/**', '!bower.json'],
+                dest: 'www'
+            },
+            partialsToWww: {
+                expand: true,
+                cwd: 'app/',
+                src: ['**/partials/**/*.html', '!**/bower_components/**'],
+                dest: 'www'
+            },
             htmlToTmp: {
                 expand: true,
                 cwd: 'app/',
                 src: ['index.html'],
                 dest: '.tmp'
             },
-            srcToWww: {
+            tmpToWww: {
                 expand: true,
                 cwd: '.tmp/',
-                src: ['blaze.min.js', 'index.html'],
+                src: ['blaze.min.js', 'blaze.css', 'index.html'],
+                dest: 'www'
+            },
+            cssToWww: {
+                expand: true,
+                cwd: 'app/',
+                src: 'main.css',
                 dest: 'www'
             }
         },
@@ -92,6 +132,14 @@ module.exports = function (grunt) {
             unit: {
                 configFile: 'test/config/karma.conf.js',
                 singleRun: true
+            }
+        },
+
+        includeSource: {
+            client: {
+                files: {
+                    'app/index.html': 'app/index.html'
+                }
             }
         },
 
@@ -112,17 +160,39 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('serve', function () {
-        grunt.task.run(['wiredep:app', 'connect', 'watch']);
+    grunt.registerTask('develop', function () {
+        grunt.task.run([
+            'wiredep:app',
+            'includeSource',
+            'connect:serve_images',
+            'connect:server', 'watch'
+        ]);
     });
 
     grunt.registerTask('build', function () {
-        grunt.task.run(['clean', 'wiredep:app', 'jshint', 'concat', 'ngAnnotate', 'uglify', 'copy:htmlToTmp', 'usemin', 'copy:srcToWww']);
+        grunt.task.run([
+            'clean',
+            'wiredep:app',
+            'bower_concat',
+            'includeSource',
+            'concat',
+            'ngAnnotate',
+            'uglify',
+            'copy:htmlToTmp',
+            'usemin',
+            'copy:tmpToWww',
+            'copy:cssToWww',
+            'copy:partialsToWww',
+            'copy:jsonToWww'
+        ]);
     });
 
     grunt.registerTask('test', function (target) {
         if (target === 'unit') {
-            grunt.task.run(['wiredep:test', 'karma:unit']);
+            grunt.task.run([
+                'wiredep:test',
+                'karma:unit'
+            ]);
         }
     });
 };

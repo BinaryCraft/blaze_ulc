@@ -1,7 +1,8 @@
 (function (app) {
+    'use strict';
     function setupState($stateProvider) {
         var home = {
-            templateUrl: 'partials/home',
+            templateUrl: 'features/homePage/partials/home.html',
             controller: 'HomeController'
         };
 
@@ -24,10 +25,18 @@
             .state('home', home)
             .state('talks', talks)
             .state('about', about)
-            .state('questions', questions)
+            .state('questions', questions);
     }
 
     app.config(function ($stateProvider) {
         setupState($stateProvider);
     });
-})(angular.module('blaze', ['ui.router']));
+
+    app.run(function($state){
+       $state.go('home');
+    });
+})(angular.module('blaze', [
+    'ui.router',
+    'blaze.homeController',
+    'slick'
+]));
