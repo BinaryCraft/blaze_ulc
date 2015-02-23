@@ -38,5 +38,6 @@
 })(angular.module('blaze', [
     'ui.router',
     'blaze.homeController',
-    'slick'
+    'slick',
+    'blaze.navbar'
 ]));

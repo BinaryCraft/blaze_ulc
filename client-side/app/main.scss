@@ -1,11 +1,44 @@
 @import "bower_components/slick-carousel/slick/slick";
 @import "bower_components/slick-carousel/slick/slick-theme";
+@import "bower_components/foundation/scss/foundation/components/global";
+
+$primary-color : black;
+$button-height : 10px;
+
+@import "bower_components/foundation/scss/foundation/components/buttons";
+
 
 $slick-dot-color: white;
 
 .slick-carousel {
     margin-left: 15%;
     margin-right: 15%;
+}
+
+.image{
+  height: 350px;
+}
+
+.navbar{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.nav-buttons-group {
+  margin-top: 50px;
+}
+
+.center {
+  margin-top: 5%;
+}
+
+.nav-button{
+  @include button($button-tny);
+  font-size: $button-font-med;
+  width: 200px;
+  height: $button-height;
+  line-height: $button-height;
+  font-variant:small-caps;
 }
 
 body {

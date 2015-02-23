@@ -1,0 +1,17 @@
+<div class="navbar" ng-controller="NavbarController">
+    <div class="row">
+        <div class="large-4 columns">
+            <img src="http://localhost:9001/blazeLogo.jpg"/>
+        </div>
+        <div class="center">
+            <div class="large-8 columns">
+            <div class="row">
+                <div class="medium-3 columns" ng-repeat="item in menu">
+                    <button ui-sref="{{item.state}}" type="button" class="nav-button" ng-model="singleModel">
+                        {{item.title}}
+                    </button>
+                </div>
+            </div>
+        </div></div>
+    </div>
+</div>

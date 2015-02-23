@@ -9,6 +9,8 @@
 </head>
 <body ng-app="blaze">
 
+    <div ng-include="'features/navbar/views/navbar.html'"></div>
+
     <div ng-controller="HomeController">
         <ui-view></ui-view>
     </div>
@@ -28,6 +30,8 @@
     <script src="common/flow/controllers/flowController.js"></script>
     <script src="common/flow/directives/flow.js"></script>
     <script src="features/homePage/homeController.js"></script>
+    <script src="features/navbar/controllers/navbarController.js"></script>
+    <script src="features/navbar/navbar.js"></script>
     <!-- /include -->
     <!-- endbuild -->
 

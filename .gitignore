@@ -4,4 +4,7 @@ client-side/plugins
 client-side/app/bower_components
 client-side/node_modules
 client-side/.tmp
+client-side/.sass-cache/
+client-side/app/main.css.map
+client-side/app/main.css
 .idea
