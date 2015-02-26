@@ -32,6 +32,9 @@
             {
                 title: 'Give',
                 state: 'give'
+            },
+            {
+
             }
         ];
         $scope.isActive = function (route) {

@@ -1,12 +1,10 @@
-@import "bower_components/slick-carousel/slick/slick";
-@import "bower_components/slick-carousel/slick/slick-theme";
 @import "bower_components/foundation/scss/foundation/components/global";
 
 $primary-color : black;
 $button-height : 10px;
 
 @import "bower_components/foundation/scss/foundation/components/buttons";
-
+@import "bower_components/foundation/scss/foundation/components/grid";
 
 $slick-dot-color: white;
 
@@ -16,16 +14,19 @@ $slick-dot-color: white;
 }
 
 .image{
-  height: 350px;
+  height: 30em;
+  width: 80em;
 }
 
 .navbar{
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-buttons-group {
-  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .center {
@@ -43,4 +44,30 @@ $slick-dot-color: white;
 
 body {
     background: #000000;
+}
+
+.logo{
+  display: block;
+  width: 200px;
+  height: 150px;
+}
+
+@media #{$medium-only} {
+}
+
+@media #{$small-only} {
+  .slick-carousel{
+    display: none;
+  }
+
+  .logo{
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .nav-button {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
