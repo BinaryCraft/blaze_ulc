@@ -7,7 +7,7 @@
         "node": "0.10.32"
     },
     "scripts": {
-        "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt develop"
+        "postinstall": "grunt develop"
     },
     "repository": {
         "type": "git",
