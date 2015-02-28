@@ -1,1 +1,1 @@
-web: npm run-script postinstall
+web: grunt develop

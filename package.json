@@ -6,9 +6,6 @@
     "engines": {
         "node": "0.10.32"
     },
-    "scripts": {
-        "postinstall": "grunt develop"
-    },
     "repository": {
         "type": "git",
         "url": "https://github.com/marthinus-engelbrecht/blaze_ulc.git"
