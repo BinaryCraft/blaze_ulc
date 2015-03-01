@@ -7,7 +7,7 @@
     "node": "0.10.32"
   },
   "scripts": {
-    "postinstall": "bower install"
+    "postinstall": "bower install && gem install compass && gem install haml"
   },
   "repository": {
     "type": "git",
