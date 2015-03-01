@@ -11,21 +11,8 @@ module.exports = function (grunt) {
                     port: process.env.PORT || 9000,
                     hostname: '0.0.0.0',
                     base: ['app', 'images']
-//                    middleware: function(connect, options){
-//                        return [connect.static(options.base), connect.static(options.base[1])];
-//                    }
                 }
             }
-//            serve_images: {
-//                options: {
-//                    port: 9001,
-//                    hostname: 'localhost',
-//                    base: 'images',
-//                    middleware: function(connect, options){
-//                        return [connect.static(options.base[0])];
-//                    }
-//                }
-//            }
         },
         watch: {
             options: {
@@ -68,6 +55,15 @@ module.exports = function (grunt) {
             distri: {
                 src: ['.tmp/_bower.min.js','app/**/*.js', '!app/bower_components/**/*.js'],
                 dest: '.tmp/blaze.concat.js'
+            }
+        },
+
+        compass: {
+            dev: {
+                options: {
+                    sassDir: 'app',
+                    cssDir: 'app'
+                }
             }
         },
 
@@ -166,7 +162,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'wiredep:app',
             'includeSource',
-//            'connect:serve_images',
+            'compass:dev',
             'connect:server',
             'watch'
         ]);
