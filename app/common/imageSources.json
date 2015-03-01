@@ -1,13 +1,13 @@
 {
     "data" : [
-        "http://0.0.0.0:9000/blaze1.jpg",
-        "http://0.0.0.0:9000:9000/blaze2.jpg",
-        "http://0.0.0.0:9000/blaze3.jpg",
-        "http://0.0.0.0:9000/blaze4.jpg",
-        "http://0.0.0.0:9000/blaze6.jpg",
-        "http://0.0.0.0:9000/blaze7.jpg",
-        "http://0.0.0.0:9000/blaze8.jpg",
-        "http://0.0.0.0:9000/blaze9.jpg",
-        "http://0.0.0.0:9000/blaze10.jpg"
+        "/blaze1.jpg",
+        "/blaze2.jpg",
+        "/blaze3.jpg",
+        "/blaze4.jpg",
+        "/blaze6.jpg",
+        "/blaze7.jpg",
+        "/blaze8.jpg",
+        "/blaze9.jpg",
+        "blaze10.jpg"
     ]
 }
