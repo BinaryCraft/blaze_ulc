@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: process.env.PORT || 9000,
-                    hostname: 'localhost',
+                    hostname: '0.0.0.0',
                     base: ['app', 'images']
 //                    middleware: function(connect, options){
 //                        return [connect.static(options.base), connect.static(options.base[1])];
