@@ -8,21 +8,24 @@ module.exports = function (grunt) {
         connect: {
             server: {
                 options: {
-                    port: 9000,
+                    port: process.env.PORT || 9000,
                     hostname: 'localhost',
-                    base: 'app'
-                }
-            },
-            serve_images: {
-                options: {
-                    port: 9001,
-                    hostname: 'localhost',
-                    base: 'images',
-                    middleware: function(connect, options){
-                        return [connect.static(options.base[0])];
-                    }
+                    base: ['app', 'images']
+//                    middleware: function(connect, options){
+//                        return [connect.static(options.base), connect.static(options.base[1])];
+//                    }
                 }
             }
+//            serve_images: {
+//                options: {
+//                    port: 9001,
+//                    hostname: 'localhost',
+//                    base: 'images',
+//                    middleware: function(connect, options){
+//                        return [connect.static(options.base[0])];
+//                    }
+//                }
+//            }
         },
         watch: {
             options: {
@@ -163,8 +166,9 @@ module.exports = function (grunt) {
         grunt.task.run([
             'wiredep:app',
             'includeSource',
-            'connect:serve_images',
-            'connect:server', 'watch'
+//            'connect:serve_images',
+            'connect:server',
+            'watch'
         ]);
     });
 
