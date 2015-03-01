@@ -6,6 +6,5 @@ node_modules
 .tmp
 .sass-cache/
 app/main.css.map
-app/main.css
 .idea
 npm-debug.log
