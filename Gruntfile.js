@@ -145,7 +145,6 @@ module.exports = function (grunt) {
 
         wiredep: {
             options: {
-                cwd: 'app',
                 directory: 'app/bower_components/'
             },
             app: {
