@@ -1,1 +1,4 @@
 language: JAVASCRIPT
+install:
+    - npm install bower
+    - bower install
