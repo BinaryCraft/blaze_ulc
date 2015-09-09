@@ -1,6 +1,7 @@
 language: node_js
 sudo: required
 install:
+- gem uninstall heroku
 - npm install
 - jspm install
 before_install:
