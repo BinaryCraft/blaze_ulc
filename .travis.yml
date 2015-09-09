@@ -4,8 +4,9 @@ install:
 #- gem uninstall heroku
 - npm install
 - jspm install
+before_script:
+- wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 before_install:
-- sudo wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
