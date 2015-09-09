@@ -39,5 +39,5 @@ module.exports = function (config) {
         configuration.browsers = ['Chrome_travis_ci'];
     }
 
-    config.set();
+    config.set(configuration);
 };
