@@ -13,3 +13,4 @@ deploy:
   app: blaze-ulc
   on:
     repo: marthinus-engelbrecht/blaze_ulc
+  strategy: git-ssh
