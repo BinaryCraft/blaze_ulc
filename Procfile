@@ -1,1 +1,1 @@
-web: grunt develop
+web: npm run develop

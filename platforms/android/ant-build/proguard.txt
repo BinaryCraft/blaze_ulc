@@ -1,3 +1,0 @@
-# view AndroidManifest.xml #generated:6
--keep class za.org.blaze_ulc.CordovaApp { <init>(...); }
-
