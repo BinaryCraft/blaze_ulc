@@ -1,16 +1,15 @@
 language: node_js
 install:
-#- gem uninstall heroku
 - npm install
 - jspm install
-before_script:
-- wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 deploy:
   provider: heroku
-  app: blaze-ulc
   api_key:
-    secure: s9a6U+M6SHl1RCMpjvumYNXVdD38orpSlQeBOCrZwG4MG+zrp8Zw77A+ZutrGWvsqugOh6kH0OpTusi0s+drqSOo8WIC5nRbFpTV8IefTwjamS0cuX7MdxE9W4M+3m0XGvAkT8XjsNdbdtDjyDje8botJ3q0NAzG1NQBHDeHyd/IwK2cwIW4WFJHZw8ywLbbj/9vD12Ku0LQYTR/HKtdOVFiH6mBJJ4tv4UoCp0s+bdij6OGxV7h/vJwptSuwusyR583G2TI858S35mbqwtFgNcPW8Bu0h5CVZRzSG9hmV2QdWYJWfhI9+OhI5sXYav9hBYRyc8AzxZZsXQh80mGrcc4HlzwKDH7o1n9+6P4dZc6EAJarXpQTzvSxTK+cB6KHq1mh1hNBUw5sGfts6kXN9A+XNTAQ3GR6WMciByw/2XIBLAW/qFBHv+SWaMKKvkEcWibhXoEfpwezY4nrE1Q8FuXsmuMIJsECrsXrTaYoTM1AITMpJ+pOX3GYaRfQ/6wmUMpwZhvwdPv9MOx6BxMGNOIph6m7Xri5ZvOXbRtFqxiPjMLl7KsmRr0/Q29svKoqm1XRIsdzjS/5bsiz7PVHCuOPpjbQkpZ3oSSH5byMWLctWVHu4Lk6mnpBzNuPNImT8jGRG8QqpJgsjh9tKWGhhprCcDdDiOaATr/aF/dtic=
+    secure: kXEWcaEDLOHSQMIPRr7O7M5CiNucXpv09nKGQsoc3SROsgTVdCz2miZUT5rpYRB8FNCxUC3zRSW8oA3aEVKkB9ljqIV13gLt2nCTcT2rfyIILaVIFShYJkfkKx1Rq9t+osWflFv978AEGR68YUE3fUiMxRzj9KBWEe7nRIOP9aPBY/CbPq1IRhFhqgMGOI5C+tvnG3oAB+nktzxRp6mlFbrIAFAei7O+2iqrkSqh6+Z7OPOqS/FgCCEsnKj8brMwJ/k8B//+MTu82ikRtc3+UvWcp2Y0JnSEXc7SSVNIDByb1kcrc5Py9zmvTLHofjCL9Dj3t1qZ1EFB+t0xGWjFLSlnZnMKbjeeR5EN9NlxpSj3rJE33Qg1Klcm386eqDPQUB6xOJaoWK1R94PHkSjAbG73d3dbqJB9Kgxd5BQetp38AVlHD8MJi5tH8t/ji+/itp7ihMxHtllfSuFYkZ4o6VAFzWJFSQi0fRFbT+TVCa2F4xv76VFQLtOudLOBeOAdJ61KzVj3fRSrKFO3kObq9P/5H0a/xNsuy7j0u02DSFbegibE8zABbsqJuCW9LS7yeqSt1LhzV/ffNbvoHgOMkKIUaz7+A/rIyejjpeWAly6lTEox7yjqjFqZhDY1a9+i4w9W/4fydJKcdzVOkU0O30KHyetFVHg2KcmFZdfDAgI=
+  app: blaze-ulc
+  on:
+    repo: marthinus-engelbrecht/blaze_ulc
