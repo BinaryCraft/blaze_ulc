@@ -2,7 +2,7 @@
 // http://karma-runner.github.io/0.10/config/configuration-file.html
 
 module.exports = function (config) {
-    config.set({
+    var configuration = {
         basePath: '../../',
 
         // testing framework to use (jasmine/mocha/qunit/...)
@@ -18,6 +18,13 @@ module.exports = function (config) {
 
         browsers: ['Chrome'],
 
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
+
         singleRun: true,
 
         jspm: {
@@ -26,5 +33,11 @@ module.exports = function (config) {
             loadFiles: ['source/**/*UnitTest.js'],
             serveFiles: ['source/**/*.js']
         }
-    });
+    };
+
+    if(process.env.TRAVIS){
+        configuration.browsers = ['Chrome_travis_ci'];
+    }
+
+    config.set();
 };
