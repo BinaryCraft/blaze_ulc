@@ -35,7 +35,13 @@ exports.config = {
     },
 
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'chrome',
+
+        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+
+        'build': 12345,
+
+        'name': 'My test name'
     },
 
     framework: 'jasmine2',
