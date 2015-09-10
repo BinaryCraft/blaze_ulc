@@ -3,6 +3,7 @@ node_js:
   - "0.12"
 install:
 - npm install
+- node_modules/protractor/bin/webdriver-manager update
 - jspm install
 before_install:
 - npm install -g jspm
