@@ -17,7 +17,7 @@ deploy:
   provider: heroku
   api_key:
     secure: kXEWcaEDLOHSQMIPRr7O7M5CiNucXpv09nKGQsoc3SROsgTVdCz2miZUT5rpYRB8FNCxUC3zRSW8oA3aEVKkB9ljqIV13gLt2nCTcT2rfyIILaVIFShYJkfkKx1Rq9t+osWflFv978AEGR68YUE3fUiMxRzj9KBWEe7nRIOP9aPBY/CbPq1IRhFhqgMGOI5C+tvnG3oAB+nktzxRp6mlFbrIAFAei7O+2iqrkSqh6+Z7OPOqS/FgCCEsnKj8brMwJ/k8B//+MTu82ikRtc3+UvWcp2Y0JnSEXc7SSVNIDByb1kcrc5Py9zmvTLHofjCL9Dj3t1qZ1EFB+t0xGWjFLSlnZnMKbjeeR5EN9NlxpSj3rJE33Qg1Klcm386eqDPQUB6xOJaoWK1R94PHkSjAbG73d3dbqJB9Kgxd5BQetp38AVlHD8MJi5tH8t/ji+/itp7ihMxHtllfSuFYkZ4o6VAFzWJFSQi0fRFbT+TVCa2F4xv76VFQLtOudLOBeOAdJ61KzVj3fRSrKFO3kObq9P/5H0a/xNsuy7j0u02DSFbegibE8zABbsqJuCW9LS7yeqSt1LhzV/ffNbvoHgOMkKIUaz7+A/rIyejjpeWAly6lTEox7yjqjFqZhDY1a9+i4w9W/4fydJKcdzVOkU0O30KHyetFVHg2KcmFZdfDAgI=
-  app: blaze-ulc
+  app: blaze-ulc-development
   on:
     repo: marthinus-engelbrecht/blaze_ulc
 after_deploy:
