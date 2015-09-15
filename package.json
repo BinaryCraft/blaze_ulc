@@ -4,7 +4,7 @@
   "description": "A website for youth on fire for Christ",
   "main": "index.js",
   "scripts": {
-    "test": "karma start tests/config/karma.conf.js && protractor tests/config/protractor.conf.js --baseUrl 'https://blaze-ulc.herokuapp.com/'",
+    "test": "karma start tests/config/karma.conf.js ",
     "test:functional" : "protractor tests/config/protractor.conf.js",
     "start": "live-server"
   },

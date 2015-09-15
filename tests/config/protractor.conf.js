@@ -8,13 +8,15 @@ exports.config = {
 
     baseUrl: 'http://localhost:53074',
 
-    directConnect: true,
+    directConnect: false,
 
     suites: {
         test: '../functional/**/*FunctionalTest.js'
     },
 
     onPrepare: function() {
+        console.log(process.env.SAUCE_USERNAME);
+        console.log(process.env.SAUCE_ACCESS_KEY);
         afterEach(function() {
             browser.manage().logs().get('browser').then(function(browserLog) {
                 if(browserLog.length !== 0) {
