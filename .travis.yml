@@ -21,7 +21,7 @@ deploy:
   on:
     repo: marthinus-engelbrecht/blaze_ulc
 after_deploy:
-  - npm test:functional
+  - npm run test:functional
   - heroku pipelines:promote blaze-ulc-development
 env:
   global:
