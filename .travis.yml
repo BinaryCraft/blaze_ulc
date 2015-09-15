@@ -20,6 +20,9 @@ deploy:
   app: blaze-ulc
   on:
     repo: marthinus-engelbrecht/blaze_ulc
+after_deploy:
+  - npm test:functional
+  - heroku pipelines:promote blaze-ulc-development
 env:
   global:
     - secure: BtpNNJWubC3g3lDrZQYIJbOo8ZYq1AdSteI3ZpoCXsOnodzrzzNc1L3FEhc4oR03DcVnWS0KTD3WslgMjE8bHezUQNugxNS01H4YrE7DlImI09sa3yMZ+JFvwZ1G+NI6tP7bqbYMb1nPDWPkHHsopTR2Qiul0PezEtxDt59/2/njUna++4wpdUwI2XuGM/BCwvNOdqtrWxl9MOEvXi5NaDSwAwRcQ7CLZcpjlVaXJE2uOpkSG4GDRuFGYJVCAqa+Y05RXhpfkIh0c0d6SrXJ64Wh/wQLWWzgc6fJM6+dEcWuNAeGfG/PJNMM8u7Pvm9hp7kaQcdIvQ4beooIpY1LhTeN1VxLB/pyq95vDRpC9XSYmuU+d7rqbwNR+vvDCyNFkWnDBcaJ2gVsn5FZMG0y71m0UBYy6M3S8P8mblnAE6ydUmPQImd59LQkCSonWl85SmdUrGLl5vVtI1/fUnFkoFG8qvQCydvgx2qi6/CWg/iicijqKZnWNyTS0W2w/oP/hAb1Zgw/O1FUbvTPJGWX6rt+cnKfKVBofqdg0U0XpcDkVorD9y6rK7iGYJ8Gxmf7UJ4yDfjHKsATl8UuEY84abCp6CPDuZKwA0bL4FB94QQcWNNzPbgC8y+OwbHYVEpF+IM7oSugz9YaSLwHKcGNiz8JM1Jz/+N8OvVIUYn2Swk=

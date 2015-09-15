@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start tests/config/karma.conf.js ",
-    "test:functional" : "protractor tests/config/protractor.conf.js",
+    "test:functional" : "protractor tests/config/protractor.conf.js --https://blaze-ulc-development.herokuapp.com/",
     "start": "live-server"
   },
   "repository": {
