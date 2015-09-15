@@ -6,7 +6,9 @@ exports.config = {
 
     allScriptsTimeout: 110000,
 
-    baseUrl: 'http://localhost:53074',
+    baseUrl: 'http://127.0.0.1:53074',
+
+    sauceSeleniumAddress: 'localhost:4445/wd/hub',
 
     directConnect: false,
 
@@ -15,15 +17,18 @@ exports.config = {
     },
 
     onPrepare: function() {
-        console.log(process.env.SAUCE_USERNAME);
-        console.log(process.env.SAUCE_ACCESS_KEY);
         afterEach(function() {
             browser.manage().logs().get('browser').then(function(browserLog) {
-                if(browserLog.length !== 0) {
+                var actualErrors = browserLog.filter(function(logEntry){
+                    var seleniumWebsocketDisconnectErrorFilter = !logEntry.message.match(/ws:\/\/127\.0\.0\.1:53074\/index\.html\/ws/);
+                    return seleniumWebsocketDisconnectErrorFilter
+                });
+
+                if(actualErrors.length !== 0) {
                     throw {
                         name : "ErrorsInLog",
                         message : "There are errors in the logs",
-                        stack: JSON.stringify(browserLog)
+                        stack: JSON.stringify(actualErrors)
                     }
                 }
             });
@@ -41,9 +46,9 @@ exports.config = {
 
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
 
-        'build': 12345,
+        'build': process.env.TRAVIS_BUILD_NUMBER,
 
-        'name': 'My test name'
+        'name': 'Functional Tests'
     },
 
     framework: 'jasmine2',
