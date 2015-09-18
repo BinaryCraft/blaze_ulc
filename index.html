@@ -19,7 +19,7 @@
 
         System.import('source/facebook').then(function(){
             console.log('App loaded successfully');
-        }).then(function(error){
+        }).catch(function(error){
             console.log('This failed horrible', error);
         })
     };
