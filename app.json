@@ -1,0 +1,11 @@
+{
+  "name":"blaze_ulc",
+  "description":"A website for on fire for Christ",
+  "scripts":{},
+  "env":{
+    "NPM_CONFIG_PRODUCTION":{
+      "required":true
+    }
+  },
+  "addons":[]
+}
